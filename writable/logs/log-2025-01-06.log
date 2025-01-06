@@ -1,0 +1,840 @@
+ERROR - 2025-01-06 02:13:09 --> mysqli_sql_exception: Table 'absensi_nurul.tbl_attendance' doesn't exist in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:13:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'absensi_nurul.tbl_attendance' doesn't exist
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:13:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'absensi_nurul.tbl_attendance' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:13:09 --> [Caused by] mysqli_sql_exception: Table 'absensi_nurul.tbl_attendance' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:13:09 --> mysqli_sql_exception: Table 'absensi_nurul.tbl_attendance' doesn't exist in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:13:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'absensi_nurul.tbl_attendance' doesn't exist
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:13:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'absensi_nurul.tbl_attendance' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:13:09 --> [Caused by] mysqli_sql_exception: Table 'absensi_nurul.tbl_attendance' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (\'1\', \'2025-01-06 02:13:09\', \'present\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_attendance` (`user_id`, `scan_time`, `status`) VALUES (:user_id:, :scan_time:, :status:)', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(99): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:25:56 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:25:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:56 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:25:57 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:25:57 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:25:57 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:25:57 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:08 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:08 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:08 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:08 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:09 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:09 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:09 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-01-06 02:26:09 --> mysqli_sql_exception: Unknown column 'user_id' in 'where clause' in C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Project\2024\absensinurul\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Project\2024\absensinurul\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Project\2024\absensinurul\system\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Project\2024\absensinurul\app\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere(Array)
+#5 C:\Project\2024\absensinurul\system\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+#6 C:\Project\2024\absensinurul\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#7 C:\Project\2024\absensinurul\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Project\2024\absensinurul\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\Project\2024\absensinurul\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\Project\2024\absensinurul\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-01-06 02:26:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+[Method: POST, Route: qrcode/processScan]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 2 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 4 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-01-06 02:26:09 --> [Caused by] mysqli_sql_exception: Unknown column 'user_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = \'1\'
+AND DATE(scan_time) = \'2025-01-06\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1782): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tbl_attendance`
+WHERE `user_id` = :user_id:
+AND DATE(scan_time) = :DATE(scan_time):', [...], false)
+ 5 APPPATH\Controllers\Dashboard.php(96): CodeIgniter\Database\BaseBuilder->getWhere([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->processScan()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
