@@ -65,32 +65,52 @@
 </div><!--end row-->
 <div class="container mt-5">
     <h2 class="text-center">Absensi with QRcode</h2>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-sm-6">
-            <h4>Your QR Code:</h4>
-            <?php if (isset($qrcode)): ?>
-                <img src="<?= $qrcode ?>" alt="QR Code" class="img-fluid">
-            <?php else: ?>
-                <p>QR Code could not be generated.</p>
-            <?php endif; ?>
-            <h4>Silahkan scan ke admin</h4>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <img src="<?= base_url('assets/uploads/') . session('image'); ?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                        <div class="mt-3">
+                            <h4><?= session('name'); ?></h4>
+                            <p class="text-secondary mb-1"><?= session('type'); ?></p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <hr class="my-4">
+                        <h4>Your QR Code:</h4>
+                        <?php if (isset($qrcode)): ?>
+                            <img src="<?= $qrcode ?>" alt="QR Code" class="img-fluid">
+                        <?php else: ?>
+                            <p>QR Code could not be generated.</p>
+                        <?php endif; ?>
+                        <h5><b><?php if (isset($cekabsen)) {
+                                    echo $cekabsen;
+                                }; ?></b></h5>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-sm-6">
-            <h2>Scan QR Code</h2>
-            <div id="result"></div>
+        <?php if (session('type') == 'Admin') { ?>
+            <div class="col-sm-6">
+                <h2>Scan QR Code</h2>
+                <div id="result"></div>
 
-            <!-- Tombol untuk memulai pemindaian (buka kamera) -->
-            <button id="startButton" onclick="startScan()" class="btn btn-success">Start Camera</button>
+                <!-- Tombol untuk memulai pemindaian (buka kamera) -->
+                <button id="startButton" onclick="startScan()" class="btn btn-success">Start Camera</button>
 
-            <!-- Tombol untuk menghentikan pemindaian (nonaktifkan kamera) -->
-            <button id="stopButton" onclick="stopScan()" class="btn btn-warning">Stop Camera</button>
+                <!-- Tombol untuk menghentikan pemindaian (nonaktifkan kamera) -->
+                <button id="stopButton" onclick="stopScan()" class="btn btn-warning">Stop Camera</button>
 
-            <!-- Elemen untuk menampilkan hasil pemindaian -->
-            <div id="reader"></div>
+                <!-- Elemen untuk menampilkan hasil pemindaian -->
+                <div id="reader"></div>
 
-            <!-- Elemen untuk menampilkan hasil pemindaian -->
+                <!-- Elemen untuk menampilkan hasil pemindaian -->
 
-        </div>
+            </div>
+        <?php }; ?>
+
     </div>
 
 

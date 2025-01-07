@@ -20,8 +20,31 @@ class Dashboard extends BaseController
     {
         $id = \session('id');
         $qrcode = $this->generate($id);
+        $db = \Config\Database::connect();
+        $userBuilder = $db->table('tbl_attendance');
 
-        return view('dashboardView', ['qrcode' => $qrcode]);
+        // Dapatkan tanggal hari ini
+        $today = date('Y-m-d');
+
+        // Cari user berdasarkan barcode dan scan hari ini
+        $user = $userBuilder
+            ->where('id_user', $id)
+            ->where('DATE(scan_time)', $today)
+            ->get()
+            ->getRowArray();
+
+        // Periksa apakah ada data
+        $absen = '';
+        if ($user) {
+            $absen = "Terimakasih telah absen hari ini";
+        } else {
+            $absen = "Anda belum melakukan scan hari ini. Silahkan scan ke admin";
+        }
+
+        $data['qrcode'] = $qrcode;
+        $data['cekabsen'] = $absen;
+
+        return view('dashboardView', $data);
     }
 
     public function logout()
@@ -108,7 +131,8 @@ class Dashboard extends BaseController
                 $attendanceData = [
                     'id_user'   => $user['id'],
                     'scan_time' => date('Y-m-d H:i:s'),
-                    'status'    => 'present'
+                    'status'    => 'Hadir',
+                    'id_admin'  => \session('id')
                 ];
 
                 $attendanceBuilder->insert($attendanceData);

@@ -19,11 +19,20 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        <?php if (session('type') == 'Admin') { ?>
+            <li>
+                <a href="/user">
+                    <div class="parent-icon"><i class='bx bx-user'></i>
+                    </div>
+                    <div class="menu-title">User Management</div>
+                </a>
+            </li>
+        <?php }; ?>
         <li>
-            <a href="/user">
-                <div class="parent-icon"><i class='bx bx-user'></i>
+            <a href="/absensi">
+                <div class="parent-icon"><i class='bx bx-notepad'></i>
                 </div>
-                <div class="menu-title">User Management</div>
+                <div class="menu-title">Absensi</div>
             </a>
         </li>
 
