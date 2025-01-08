@@ -57,21 +57,34 @@ class Dashboard extends BaseController
 
     public function generate($id)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $db = \Config\Database::connect();
-        $userBuilder = $db->table('tbl_user');
+        $codeBuilder = $db->table('tbl_code');
 
-        // Cari user berdasarkan barcode
-        $user = $userBuilder->getWhere(['id' => $id])->getRowArray();
+        // Cari kode unik yang berlaku untuk user saat ini dalam 1 menit terakhir
+        $existingCode = $codeBuilder
+            ->where('id_user', $id)
+            ->where('created_at >=', date('Y-m-d H:i:s', strtotime('-1 minutes')))
+            ->get()
+            ->getRowArray();
 
-        if (!$user) {
-            return "User not found";
+        if (!$existingCode) {
+            // Generate kode unik baru
+            $uniqueCode = bin2hex(random_bytes(8)); // 16 karakter kode unik
+            $codeBuilder->insert([
+                'code_uniq'       => $uniqueCode,
+                'created_at' => date('Y-m-d H:i:s'),
+                'id_user'    => $id,
+            ]);
+        } else {
+            $uniqueCode = $existingCode['code_uniq'];
         }
 
         // Data yang akan di-encode ke QR code
         $data = [
-            'id'    => $user['id'],
-            'name'  => $user['name'],
-            'email' => $user['email'],
+            'id_user'   => $id,
+            'code_uniq'  => $uniqueCode,
+            'created_at' => date('Y-m-d H:i:s'),
         ];
 
         $qrData = json_encode($data);
@@ -99,14 +112,21 @@ class Dashboard extends BaseController
             $qrString = $request->qr_data;
             // Decode JSON dari string
             $decodedData = json_decode($qrString, true);
-            $id = $decodedData['id'];
+            $id = $decodedData['id_user'];
+            $code_uniq = $decodedData['code_uniq'];
 
             // Koneksi database dan query builder
             $db = \Config\Database::connect();
-            $userBuilder = $db->table('tbl_user');
+            $codeBuilder = $db->table('tbl_code');
 
-            // Cari user berdasarkan ID
-            $user = $userBuilder->getWhere(['id' => $id])->getRowArray();
+            // Hapus kode unik yang sudah kadaluarsa (lebih dari 1 menit)
+            $codeBuilder
+                ->where('created_at <', date('Y-m-d H:i:s', strtotime('-1 minutes')))
+                ->where('id_user', $id)
+                ->delete();
+
+            // Cari user berdasarkan ID dan code uniq
+            $user = $codeBuilder->getWhere(['id_user' => $id, 'code_uniq' => $code_uniq])->getRowArray();
 
             if ($user) {
                 // Cek apakah user sudah hadir di hari ini
@@ -148,7 +168,7 @@ class Dashboard extends BaseController
             } else {
                 return $this->response->setJSON([
                     'status' => 'error',
-                    'message' => 'Invalid QR Code or user not found.'
+                    'message' => 'Maaf QR Code sudah tidak berlaku'
                 ]);
             }
         }

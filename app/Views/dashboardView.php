@@ -84,9 +84,14 @@
                         <?php else: ?>
                             <p>QR Code could not be generated.</p>
                         <?php endif; ?>
-                        <h5><b><?php if (isset($cekabsen)) {
+                        <h5>
+                            <b>
+                                <?php if (isset($cekabsen)) {
                                     echo $cekabsen;
-                                }; ?></b></h5>
+                                }; ?>
+                            </b>
+                        </h5>
+                        <button type="button" class="btn btn-success" onclick="generate()">Generate</button>
                     </div>
                 </div>
             </div>
@@ -120,6 +125,7 @@
 <script>
     // Variabel untuk menyimpan objek QR Code scanner
     let html5QrCode;
+    let isProcessing = false; // Untuk memastikan pemindaian tidak dilakukan berulang dalam interval 5 detik
 
     // Fungsi untuk memulai pemindaian QR Code
     function startScan() {
@@ -139,10 +145,13 @@
         // Mulai pemindaian menggunakan kamera belakang
         html5QrCode.start({
                 facingMode: "environment"
-            }, config, onScanSuccess, onScanError)
-            .catch(err => {
-                console.error("Error starting QR Code scanner:", err);
-            });
+            },
+            config,
+            onScanSuccess,
+            onScanError
+        ).catch(err => {
+            console.error("Error starting QR Code scanner:", err);
+        });
     }
 
     // Fungsi untuk menghentikan pemindaian QR Code
@@ -161,10 +170,12 @@
 
     // Fungsi yang dipanggil saat QR Code berhasil dipindai
     function onScanSuccess(decodedText, decodedResult) {
-        // Tampilkan hasil scan
+        if (isProcessing) return; // Abaikan jika sedang dalam jeda 5 detik
 
+        isProcessing = true; // Blokir pemrosesan ulang selama 5 detik
+        console.log(`QR Code detected: ${decodedText}`, decodedResult);
 
-        // Kirim hasil scan ke server (optional)
+        // Kirim hasil scan ke server
         fetch('<?= base_url('qrcode/processScan') ?>', {
                 method: 'POST',
                 headers: {
@@ -183,6 +194,9 @@
                         text: `Attendance logged for ${data.user.name}`,
                         icon: "success"
                     });
+
+                    // Hentikan pemindaian setelah sukses
+                    stopScan();
                     document.getElementById('result').innerHTML = `<p>Terimakasih sudah absen hari ini</p>`;
                 } else {
                     Swal.fire({
@@ -192,12 +206,22 @@
                     });
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => console.error('Error:', error))
+            .finally(() => {
+                // Atur ulang pemrosesan setelah 5 detik
+                setTimeout(() => {
+                    isProcessing = false;
+                }, 5000);
+            });
     }
 
     // Fungsi untuk menangani error saat pemindaian QR Code
     function onScanError(errorMessage) {
         console.error('QR Code scan error:', errorMessage);
+    }
+
+    function generate() {
+        location.reload();
     }
 </script>
 <?= $this->endSection(); ?>
