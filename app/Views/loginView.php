@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="<?= base_url('assets/temp/'); ?>assets/images/favicon-32x32.png" type="image/png" />
+    <link rel="icon" href="<?= base_url('assets/') ?>fav-logo.jpg" />
     <!--plugins-->
     <link href="<?= base_url('assets/temp/'); ?>assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="<?= base_url('assets/temp/'); ?>assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="<?= base_url('assets/temp/'); ?>assets/css/app.css" rel="stylesheet">
     <link href="<?= base_url('assets/temp/'); ?>assets/css/icons.css" rel="stylesheet">
-    <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+    <title>Login | PT. Kahatex</title>
 </head>
 
 <body class="">
@@ -48,10 +48,9 @@
                             <div class="card-body p-sm-5">
                                 <div class="">
                                     <div class="mb-3 text-center">
-                                        <img src="<?= base_url('assets/temp/'); ?>assets/images/logo-icon.png" width="60" alt="">
+                                        <img src="<?= base_url('assets/pt-kahatex.png'); ?>" height="100" alt="">
                                     </div>
                                     <div class="text-center mb-4">
-                                        <h5 class="">Rocker Admin</h5>
                                         <p class="mb-0">Please log in to your account</p>
                                     </div>
                                     <div class="form-body">
@@ -71,8 +70,6 @@
                                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
                                                     <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Forgot Password ?</a>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">

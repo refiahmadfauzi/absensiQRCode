@@ -5,6 +5,22 @@
 <hr />
 <div class="card">
     <div class="card-body">
+        <form action="javascript:;" id="formCari">
+            <div class="d-flex align-items-center mb-3">
+                <div class="me-3">
+                    <label for="dari_tgl" class="form-label">Dari Tanggal</label>
+                    <input type="date" name="dari_tgl" id="dari_tgl" class="form-control">
+                </div>
+                <div class="me-3">
+                    <label for="sampai_tgl" class="form-label">Sampai Tanggal</label>
+                    <input type="date" name="sampai_tgl" id="sampai_tgl" class="form-control">
+                </div>
+                <div class="">
+                    <button type="submit" id="btnCari" class="btn btn-primary">Cari data</button>
+                    <button type="button" class="btn btn-warning" onclick="resetcari()">Reset data</button>
+                </div>
+            </div>
+        </form>
         <div class="table-responsive">
             <table id="example2" class="table table-striped table-bordered datatable">
                 <thead>
@@ -67,20 +83,16 @@
         $('.modal-title').text('Form User'); // Set Title to Bootstrap modal title
     }
 
-    $(document).on('submit', '#formAdd', function(event) {
-        $('#btnSave').text('saving...'); //change button text
-        $('#btnSave').attr('disabled', true); //set button disable 
+    $(document).on('submit', '#formCari', function(event) {
+        $('#btnCari').text('Mencari data...'); //change button text
+        $('#btnCari').attr('disabled', true); //set button disable 
         var url;
 
-        if (save_method == 'add') {
-            url = "<?php echo site_url('user/create') ?>";
-        } else {
-            url = "<?php echo site_url('user/update') ?>";
-        }
+        url = "<?php echo site_url('absensi/cari_data') ?>";
 
         // ajax adding data to database
 
-        var formData = new FormData($('#formAdd')[0]);
+        var formData = new FormData($('#formCari')[0]);
         $.ajax({
             url: url,
             type: "POST",
@@ -122,107 +134,24 @@
                         })
                     }
                 }
-                $('#btnSave').text('Simpan'); //change button text
-                $('#btnSave').attr('disabled', false); //set button enable 
+                $('#btnCari').text('Cari Data'); //change button text
+                $('#btnCari').attr('disabled', false); //set button enable 
 
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error adding / update data');
-                $('#btnSave').text('Simpan'); //change button text
-                $('#btnSave').attr('disabled', false); //set button enable 
+                $('#btnCari').text('Cari Data'); //change button text
+                $('#btnCari').attr('disabled', false); //set button enable 
 
             }
         });
     });
 
-
-    function edit(id) {
-        save_method = 'update';
-        $('#formAdd')[0].reset(); // reset form on modals
-
-        //Ajax Load data from ajax
-        $.ajax({
-            url: "<?php echo site_url('user/getbyid') ?>/" + id,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-
-                $('[name="iduser"]').val(data.id);
-                $('[name="name"]').val(data.name);
-                $('[name="email"]').val(data.email);
-                $('[name="type"]').val(data.type);
-                $('[name="status"]').val(data.status);
-                $('[name="password"]').next().empty();
-                $('[name="password"]').removeAttr('required');
-                $('[name="image"]').removeAttr('required');
-                $('#showgantipw').show();
-                $('#showgantiimg').show();
-                $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error get data from ajax');
-            }
-        });
-    };
-
-    function hapus(id) {
-        Swal.fire({
-            title: 'Apakah anda yakin?',
-            text: "Menghapus data berarti data akan hilang!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "<?php echo site_url('user/delete') ?>/" + id,
-                    type: "POST",
-                    dataType: "JSON",
-                    success: function(data) {
-                        //if success reload ajax table
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-                        if (data.status == true) //if success close modal and reload ajax table
-                        {
-
-                            Toast.fire({
-                                icon: 'success',
-                                title: data.message
-                            });
-                            window.setTimeout(function() {
-                                location.reload(true);
-                            }, 1000);
-                        } else {
-                            for (var i = 0; i < data.inputerror.length; i++) {
-                                $('[name="' + data.inputerror[i] + '"]').addClass('is-invalid'); //select parent twice to select div form-group class and add has-error class
-                                // $('[name="' + data.inputerror[i] + '"]').next().text(data.error_string[i]); //select span help-block class set text error string
-                                Toast.fire({
-                                    icon: 'warning',
-                                    title: data.error_string[i]
-                                })
-                            }
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error deleting data');
-                    }
-                });
-            }
-        })
+    function resetcari() {
+        window.setTimeout(function() {
+            location.reload(true);
+        }, 1000);
     }
 </script>
 <?= $this->endSection(); ?>

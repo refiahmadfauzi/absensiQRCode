@@ -1,15 +1,15 @@
 <?= $this->extend('main_layout'); ?>
 <?= $this->section('content'); ?>
-
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
     <div class="col">
         <div class="card radius-10 border-start border-0 border-4 border-info">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Total Orders</p>
-                        <h4 class="my-1 text-info">4805</h4>
-                        <p class="mb-0 font-13">+2.5% from last week</p>
+                        <?php if (isset($hadir)) { ?>
+                            <p class="mb-0 text-secondary">Total Hadir</p>
+                            <h4 class="my-1 text-info"><?= $hadir; ?></h4>
+                        <?php } ?>
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class='bx bxs-cart'></i>
                     </div>
@@ -22,9 +22,10 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Total Revenue</p>
-                        <h4 class="my-1 text-danger">$84,245</h4>
-                        <p class="mb-0 font-13">+5.4% from last week</p>
+                        <?php if (isset($cuti)) { ?>
+                            <p class="mb-0 text-secondary">Total Cuti</p>
+                            <h4 class="my-1 text-danger"><?= $cuti; ?></h4>
+                        <?php }; ?>
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i class='bx bxs-wallet'></i>
                     </div>
@@ -37,9 +38,10 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Bounce Rate</p>
-                        <h4 class="my-1 text-success">34.6%</h4>
-                        <p class="mb-0 font-13">-4.5% from last week</p>
+                        <?php if (isset($sakit)) { ?>
+                            <p class="mb-0 text-secondary">Total Sakit</p>
+                            <h4 class="my-1 text-success"><?= $sakit; ?></h4>
+                        <?php }; ?>
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-bar-chart-alt-2'></i>
                     </div>
@@ -52,9 +54,10 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Total Customers</p>
-                        <h4 class="my-1 text-warning">8.4K</h4>
-                        <p class="mb-0 font-13">+8.4% from last week</p>
+                        <?php if (isset($user)) { ?>
+                            <p class="mb-0 text-secondary">Total User</p>
+                            <h4 class="my-1 text-warning"><?= $user; ?></h4>
+                        <?php }; ?>
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i class='bx bxs-group'></i>
                     </div>
@@ -66,6 +69,23 @@
 <div class="container mt-5">
     <h2 class="text-center">Absensi with QRcode</h2>
     <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 id="clock">00:00:00</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <?php if (isset($hadirnow)) { ?>
+                        <p class="mb-0 text-secondary">Total hadir hari ini</p>
+                        <h4 class="my-1 text-warning"><?= $hadirnow; ?></h4>
+                    <?php }; ?>
+                </div>
+            </div>
+        </div>
         <?php if (session('type') == 'Admin') { ?>
             <div class="col-sm-6">
                 <h2>Scan QR Code</h2>
@@ -224,5 +244,31 @@
     function generate() {
         location.reload();
     }
+
+    function updateClock() {
+        const clockElement = document.getElementById("clock");
+        const now = new Date();
+
+        // Format jam, menit, detik
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        // Format tanggal dan hari
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const dayOfWeek = daysOfWeek[now.getDay()]; // Hari
+        const date = now.getDate(); // Tanggal
+        const month = now.getMonth() + 1; // Bulan (JavaScript months start from 0)
+        const year = now.getFullYear(); // Tahun
+
+        // Update konten elemen clock dengan tanggal, hari, dan waktu
+        clockElement.innerHTML = `${dayOfWeek}, ${date}/${month}/${year} <br> ${hours}:${minutes}:${seconds}`;
+    }
+
+    // Panggil updateClock setiap detik
+    setInterval(updateClock, 1000);
+
+    // Jalankan sekali agar tidak menunggu interval pertama
+    updateClock();
 </script>
 <?= $this->endSection(); ?>

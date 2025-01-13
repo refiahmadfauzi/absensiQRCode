@@ -21,13 +21,28 @@ class Dashboard extends BaseController
         $id = \session('id');
         $qrcode = $this->generate($id);
         $db = \Config\Database::connect();
-        $userBuilder = $db->table('tbl_attendance');
+        $attendanceBuilder = $db->table('tbl_attendance');
+        $userBuilder = $db->table('tbl_user');
+
+        // Contoh kondisi: hanya hitung data dengan status 'Cuti'
+        if (\session('type' == 'Admin')) {
+            $totalDataCuti = $attendanceBuilder->where('status', 'Cuti')->countAllResults();
+            $totalDataHadir = $attendanceBuilder->where('status', 'Hadir')->countAllResults();
+            $totalDataSakit = $attendanceBuilder->where('status', 'Sakit')->countAllResults();
+            $totalDatauser = $userBuilder->where('status', 1)->countAllResults();
+        } else {
+            $totalDataCuti = $attendanceBuilder->where('id_user', $id)->where('status', 'Cuti')->countAllResults();
+            $totalDataHadir = $attendanceBuilder->where('id_user', $id)->where('status', 'Hadir')->countAllResults();
+            $totalDataSakit = $attendanceBuilder->where('id_user', $id)->where('status', 'Sakit')->countAllResults();
+            $totalDatauser = $userBuilder->where('status', 1)->countAllResults();
+        }
+        $totalDataHadirNow = $attendanceBuilder->where('status', 'Hadir')->where('DATE(scan_time)', date('Y-m-d'))->countAllResults();
 
         // Dapatkan tanggal hari ini
         $today = date('Y-m-d');
 
         // Cari user berdasarkan barcode dan scan hari ini
-        $user = $userBuilder
+        $user = $attendanceBuilder
             ->where('id_user', $id)
             ->where('DATE(scan_time)', $today)
             ->get()
@@ -43,6 +58,11 @@ class Dashboard extends BaseController
 
         $data['qrcode'] = $qrcode;
         $data['cekabsen'] = $absen;
+        $data['cuti'] = $totalDataCuti;
+        $data['hadir'] = $totalDataHadir;
+        $data['sakit'] = $totalDataSakit;
+        $data['user'] = $totalDatauser;
+        $data['hadirnow'] = $totalDataHadirNow;
 
         return view('dashboardView', $data);
     }
@@ -118,6 +138,7 @@ class Dashboard extends BaseController
             // Koneksi database dan query builder
             $db = \Config\Database::connect();
             $codeBuilder = $db->table('tbl_code');
+            $userBuilder = $db->table('tbl_user');
 
             // Hapus kode unik yang sudah kadaluarsa (lebih dari 1 menit)
             $codeBuilder
@@ -126,9 +147,10 @@ class Dashboard extends BaseController
                 ->delete();
 
             // Cari user berdasarkan ID dan code uniq
-            $user = $codeBuilder->getWhere(['id_user' => $id, 'code_uniq' => $code_uniq])->getRowArray();
+            $code = $codeBuilder->getWhere(['id_user' => $id, 'code_uniq' => $code_uniq])->getRowArray();
+            $user = $userBuilder->getWhere(['id' => $id])->getRowArray();
 
-            if ($user) {
+            if ($code) {
                 // Cek apakah user sudah hadir di hari ini
                 $attendanceBuilder = $db->table('tbl_attendance');
                 $today = date('Y-m-d'); // Mengambil tanggal hari ini (format Y-m-d)
@@ -176,6 +198,65 @@ class Dashboard extends BaseController
         return $this->response->setJSON([
             'status' => 'error',
             'message' => 'Invalid request data.'
+        ]);
+    }
+
+    public function profile()
+    {
+        $id = \session('id');
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_user');
+        $builder->where('id', \session('id'));
+        $data['profile'] = $builder->get()->getRow();
+
+        return view('profileView', $data);
+    }
+
+    public function updateprofile()
+    {
+        $session = session();
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_user');
+
+        // Ambil data file
+        $file = $this->request->getFile('image');
+        $id = $this->request->getPost('iduser');
+        // Siapkan array untuk data update
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'create_at' => \date('Y-m-d'),
+            'alamat' => $this->request->getPost('alamat'),
+            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+            'jenis_kelamin' => $this->request->getPost('jk'),
+            'agama' => $this->request->getPost('agama'),
+            'no_ktp' => $this->request->getPost('no_ktp'),
+            'pendidikan_terakhir' => $this->request->getPost('pendidikan'),
+            'no_hp' => $this->request->getPost('no_hp'),
+        ];
+
+        // Periksa apakah password diubah
+        $password = $this->request->getPost('password');
+        if (!empty($password)) {
+            $data['password'] = md5($password); // Enkripsi password jika diisi
+        }
+
+        // Periksa apakah ada file yang diunggah
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName(); // Generate nama file acak
+            $file->move('assets/uploads', $newName); // Simpan file ke folder uploads
+            $data['image'] = $newName; // Simpan nama file ke dalam array data
+        }
+
+        // Update data berdasarkan ID
+        $builder->where('id', $id);
+        $builder->update($data);
+
+        // Response JSON
+        echo json_encode([
+            "status" => TRUE,
+            "notif" => "Data berhasil diperbarui"
         ]);
     }
 }

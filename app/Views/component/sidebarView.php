@@ -2,10 +2,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="<?= base_url('assets/temp/'); ?>assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-        </div>
-        <div>
-            <h4 class="logo-text">Rocker</h4>
+            <img src="<?= base_url('assets/pt-kahatex-logo.jpeg'); ?>" class="img-fluid" alt="logo icon">
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
@@ -33,6 +30,13 @@
                 <div class="parent-icon"><i class='bx bx-notepad'></i>
                 </div>
                 <div class="menu-title">Absensi</div>
+            </a>
+        </li>
+        <li>
+            <a href="/pengajuan">
+                <div class="parent-icon"><i class='bx bx-notepad'></i>
+                </div>
+                <div class="menu-title">Pengajuan Cuti & Sakit</div>
             </a>
         </li>
 

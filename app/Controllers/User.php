@@ -46,6 +46,14 @@ class User extends BaseController
             'image' => $newName,
             'status' => $this->request->getPost('status'),
             'create_at' => \date('Y-m-d'),
+            'alamat' => $this->request->getPost('alamat'),
+            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+            'jenis_kelamin' => $this->request->getPost('jk'),
+            'agama' => $this->request->getPost('agama'),
+            'no_ktp' => $this->request->getPost('no_ktp'),
+            'pendidikan_terakhir' => $this->request->getPost('pendidikan'),
+            'no_hp' => $this->request->getPost('no_hp'),
         ];
 
         $db = \Config\Database::connect();
@@ -81,6 +89,14 @@ class User extends BaseController
             'type' => $this->request->getPost('type'),
             'status' => $this->request->getPost('status'),
             'create_at' => \date('Y-m-d'),
+            'alamat' => $this->request->getPost('alamat'),
+            'tempat_lahir' => $this->request->getPost('tempat_lahir'),
+            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
+            'jenis_kelamin' => $this->request->getPost('jk'),
+            'agama' => $this->request->getPost('agama'),
+            'no_ktp' => $this->request->getPost('no_ktp'),
+            'pendidikan_terakhir' => $this->request->getPost('pendidikan'),
+            'no_hp' => $this->request->getPost('no_hp'),
         ];
 
         // Periksa apakah password diubah
