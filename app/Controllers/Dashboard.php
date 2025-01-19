@@ -139,6 +139,7 @@ class Dashboard extends BaseController
             $db = \Config\Database::connect();
             $codeBuilder = $db->table('tbl_code');
             $userBuilder = $db->table('tbl_user');
+            $jamBuilder = $db->table('tbl_jam');
 
             // Hapus kode unik yang sudah kadaluarsa (lebih dari 1 menit)
             $codeBuilder
@@ -149,44 +150,73 @@ class Dashboard extends BaseController
             // Cari user berdasarkan ID dan code uniq
             $code = $codeBuilder->getWhere(['id_user' => $id, 'code_uniq' => $code_uniq])->getRowArray();
             $user = $userBuilder->getWhere(['id' => $id])->getRowArray();
+            $jamMasuk = $jamBuilder->getWhere(['id' => 1])->getRowArray();
+            $jamKeluar = $jamBuilder->getWhere(['id' => 2])->getRowArray();
 
             if ($code) {
-                // Cek apakah user sudah hadir di hari ini
                 $attendanceBuilder = $db->table('tbl_attendance');
-                $today = date('Y-m-d'); // Mengambil tanggal hari ini (format Y-m-d)
+                $today = date('Y-m-d');
+                $currentTime = date('H:i:s');
 
-                // Pengecekan apakah ada absensi dengan user_id dan tanggal hari ini
-                $existingAttendance = $attendanceBuilder->getWhere([
+                // Ambil semua absensi user hari ini
+                $attendanceToday = $attendanceBuilder->getWhere([
                     'id_user' => $user['id'],
-                    'DATE(scan_time)' => $today // Menggunakan DATE() untuk mencocokkan hanya tanggal
-                ])->getRowArray();
+                    'DATE(scan_time)' => $today
+                ])->getResultArray();
 
-                if ($existingAttendance) {
-                    // Jika sudah ada, kembalikan pesan bahwa sudah tercatat
+                // Cek jumlah absensi hari ini
+                if (count($attendanceToday) >= 2) {
                     return $this->response->setJSON([
                         'status' => 'error',
-                        'message' => 'Attendance already logged for today.'
+                        'message' => 'Attendance is already completed for today.'
                     ]);
                 }
 
-                // Jika tidak ada, simpan data absensi
-                $attendanceData = [
-                    'id_user'   => $user['id'],
-                    'scan_time' => date('Y-m-d H:i:s'),
-                    'status'    => 'Hadir',
-                    'id_admin'  => \session('id')
-                ];
+                // Jika belum ada absensi masuk
+                if (empty($attendanceToday)) {
+                    $status = ($currentTime > $jamMasuk['time']) ? 'Terlambat' : 'Hadir';
 
-                $attendanceBuilder->insert($attendanceData);
+                    $attendanceData = [
+                        'id_user'   => $user['id'],
+                        'scan_time' => date('Y-m-d H:i:s'),
+                        'status'    => $status,
+                        'id_admin'  => \session('id'),
+                        'id_jam'    => $jamMasuk['id']
+                    ];
 
-                return $this->response->setJSON([
-                    'status' => 'success',
-                    'message' => 'Attendance logged successfully',
-                    'user' => [
-                        'id' => $user['id'],
-                        'name' => $user['name']
-                    ]
-                ]);
+                    $attendanceBuilder->insert($attendanceData);
+
+                    return $this->response->setJSON([
+                        'status' => 'success',
+                        'message' => $status === 'Terlambat' ? 'You are late!' : 'Attendance logged successfully.',
+                        'user' => [
+                            'id' => $user['id'],
+                            'name' => $user['name']
+                        ]
+                    ]);
+                }
+
+                // Jika sudah ada absensi masuk, cek untuk absensi pulang
+                if (count($attendanceToday) === 1) {
+                    $attendanceData = [
+                        'id_user'   => $user['id'],
+                        'scan_time' => date('Y-m-d H:i:s'),
+                        'status'    => 'Pulang',
+                        'id_admin'  => \session('id'),
+                        'id_jam'    => $jamKeluar['id']
+                    ];
+
+                    $attendanceBuilder->insert($attendanceData);
+
+                    return $this->response->setJSON([
+                        'status' => 'success',
+                        'message' => 'Your check-out has been logged.',
+                        'user' => [
+                            'id' => $user['id'],
+                            'name' => $user['name']
+                        ]
+                    ]);
+                }
             } else {
                 return $this->response->setJSON([
                     'status' => 'error',
